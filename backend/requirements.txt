@@ -1,0 +1,5 @@
+django
+djangorestframework
+openai
+pydantic_ai
+django-cors-headers

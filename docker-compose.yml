@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/app
+    environment:
+      - DEBUG=True
+    env_file:
+      - .env
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "8003:3000"
+    depends_on:
+      - backend
+
+  # db:
+  #   image: postgres:latest
+  #   environment:
+  #     POSTGRES_DB: llm_judge_db
+  #     POSTGRES_USER: user
+  #     POSTGRES_PASSWORD: password
+  #   ports:
+  #     - "5432:5432"
