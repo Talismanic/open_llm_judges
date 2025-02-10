@@ -3,6 +3,8 @@
 ## Overview
 Open LLM Judges is a system that evaluates AI-generated outputs using different judging mechanisms. The system provides three predefined archetypes, each with specific rules for handling multiple worker agents.
 
+**Note:** *GEMINI FLASH 2.0 is the default judge used in the system.*
+
 ## Installation & Setup
 ### Prerequisites
 - Docker and Docker Compose installed on your system.
@@ -33,18 +35,29 @@ This will boot both the backend and frontend servers.
 ## Archetype Logic
 The system operates with three predefined **archetypes**, each determining the allowed number of worker agents:
 
-### **Archetype 1**: Single-Agent Judging
+### **Archetype 1**: Single Worker, Single Judge
 - Only **one worker agent** is allowed.
 - If multiple agents are provided, an error is raised.
+- Suitable for simple tasks where a single model evaluates a task independently.
 
-### **Archetype 2**: Multi-Agent Parallel Judging
+### **Archetype 2**: Multiple Workers, Single Judge
 - The number of worker agents **must match** the specified number of agents (`num_agents`).
 - If the count mismatches, an error occurs.
+- Ideal for tasks where multiple models work in parallel, but only one judge consolidates the evaluation.
 
-### **Archetype 3**: Odd Number Consensus Judging
+### **Archetype 3**: Majority Consensus Judging
 - The number of worker agents **must be an odd number**.
 - The specified `num_agents` value **must match** the number of worker agents.
 - If an even number is provided, an error is raised.
+- This approach ensures that consensus-based decisions are made by an odd-numbered panel of models.
+
+### **Using the System**
+1. Select an **archetype** from the dropdown.
+2. If using multiple worker models, ensure `num_agents` matches the provided models.
+3. Provide the **model names**, **endpoints**, and optional **API keys** for worker agents.
+4. Enter the **task meta** (a description of what needs to be done).
+5. Provide the actual **task content** for evaluation.
+6. Click **Submit** to process the request.
 
 These rules ensure that the system enforces the correct evaluation structure based on the chosen archetype.
 
