@@ -61,6 +61,12 @@ The system operates with three predefined **archetypes**, each determining the a
 
 These rules ensure that the system enforces the correct evaluation structure based on the chosen archetype.
 
+
+
+https://github.com/user-attachments/assets/6a1be1a8-b68f-439f-b9e1-fdfe2db8ceef
+
+
+
 ## API Usage
 To interact with the system, send JSON requests with the following parameters:
 - `archetype`: Specifies the evaluation mode (1, 2, or 3).
